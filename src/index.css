@@ -9,25 +9,25 @@ All colors MUST be HSL.
 @layer base {
   :root {
     /* ZooZo Professional Grey/Black Theme */
-    --background: 0 0% 98%;
+    --background: 0 0% 96%;
     --foreground: 0 0% 12%;
 
-    --card: 0 0% 100%;
+    --card: 0 0% 98%;
     --card-foreground: 0 0% 12%;
 
-    --popover: 0 0% 100%;
+    --popover: 0 0% 98%;
     --popover-foreground: 0 0% 12%;
 
     --primary: 0 0% 9%;
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 0 0% 95%;
+    --secondary: 0 0% 92%;
     --secondary-foreground: 0 0% 18%;
 
-    --muted: 0 0% 96%;
+    --muted: 0 0% 94%;
     --muted-foreground: 0 0% 45%;
 
-    --accent: 0 0% 95%;
+    --accent: 0 0% 92%;
     --accent-foreground: 0 0% 18%;
 
     --destructive: 0 84.2% 60.2%;
@@ -39,8 +39,8 @@ All colors MUST be HSL.
 
     /* Professional design tokens */
     --primary-gradient: linear-gradient(135deg, hsl(0 0% 9%) 0%, hsl(0 0% 20%) 100%);
-    --subtle-gradient: linear-gradient(180deg, hsl(0 0% 98%) 0%, hsl(0 0% 95%) 100%);
-    --card-gradient: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(0 0% 98%) 100%);
+    --subtle-gradient: linear-gradient(180deg, hsl(0 0% 96%) 0%, hsl(0 0% 92%) 100%);
+    --card-gradient: linear-gradient(145deg, hsl(0 0% 98%) 0%, hsl(0 0% 94%) 100%);
     
     /* Professional shadows */
     --shadow-subtle: 0 1px 3px 0 hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);

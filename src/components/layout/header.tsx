@@ -1,4 +1,4 @@
-import { Brain } from "lucide-react";
+import zooZoLogo from "@/assets/zoozo-logo.svg";
 
 export const Header = () => {
   return (
@@ -6,8 +6,8 @@ export const Header = () => {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-primary rounded-lg shadow-medium">
-              <Brain className="h-6 w-6 text-primary-foreground" />
+            <div className="p-2 bg-background rounded-lg shadow-medium border">
+              <img src={zooZoLogo} alt="ZooZo Logo" className="h-8 w-8 object-contain" />
             </div>
             <div>
               <h1 className="text-xl font-bold tracking-tight">ZooZo</h1>
