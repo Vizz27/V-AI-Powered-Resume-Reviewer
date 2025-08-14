@@ -2,8 +2,7 @@
 
 ## Project info
 
-**URL**: https://zoozo-resume-reviewer.vercel.app/
-
+**URL**:(https://lovable.dev/projects/33aa5cd4-3d60-481f-9477-febb22e4c12f)
 ## How can I edit this code?
 
 There are several ways of editing your application.
