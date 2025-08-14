@@ -2,7 +2,7 @@
 
 ## Project info
 
-**URL**:(https://zoozo-resume-reviewer.vercel.app/)
+**URL**: https://zoozo-resume-reviewer.vercel.app/
 
 ## How can I edit this code?
 
