@@ -1,8 +1,8 @@
-# Welcome to your Lovable project
+# Welcome to my project
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/33aa5cd4-3d60-481f-9477-febb22e4c12f
+**URL**:(https://zoozo-resume-reviewer.vercel.app/)
 
 ## How can I edit this code?
 
