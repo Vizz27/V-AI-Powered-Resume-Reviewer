@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
 import { UploadZone } from "@/components/ui/upload-zone";
 import { ScoreCard } from "@/components/analysis/score-card";
 import { FeedbackList, FeedbackItem } from "@/components/analysis/feedback-list";
@@ -226,6 +227,8 @@ const Index = () => {
           </div>
         </div>
       </main>
+      
+      <Footer />
     </div>;
 };
 export default Index;
