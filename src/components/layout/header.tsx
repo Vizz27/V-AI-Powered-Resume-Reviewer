@@ -1,4 +1,4 @@
-import zooZoLogo from "@/assets/zoozo-logo.svg";
+import vLogo from "@/assets/v-logo.png";
 
 export const Header = () => {
   return (
@@ -7,10 +7,10 @@ export const Header = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-background rounded-lg shadow-medium border">
-              <img src={zooZoLogo} alt="ZooZo Logo" className="h-8 w-8 object-contain" />
+              <img src={vLogo} alt="V Logo" className="h-8 w-8 object-contain" />
             </div>
             <div>
-              <h1 className="text-xl font-bold tracking-tight">ZooZo</h1>
+              <h1 className="text-xl font-bold tracking-tight">V</h1>
               <p className="text-sm text-muted-foreground -mt-1">Resume Reviewer</p>
             </div>
           </div>

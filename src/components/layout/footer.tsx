@@ -9,23 +9,14 @@ export const Footer = () => {
           {/* Left Column - Brand and Social */}
           <div className="space-y-6">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <svg
-                  viewBox="0 0 100 100"
-                  className="w-6 h-6 fill-primary-foreground"
-                >
-                  <circle cx="25" cy="25" r="20" />
-                  <circle cx="75" cy="25" r="20" />
-                  <circle cx="25" cy="75" r="20" />
-                  <circle cx="75" cy="75" r="20" />
-                  <circle cx="50" cy="50" r="15" />
-                </svg>
+              <div className="w-10 h-10 bg-primary-gradient rounded-lg flex items-center justify-center p-1">
+                <img src="/src/assets/v-logo.png" alt="V Logo" className="w-full h-full object-contain" />
               </div>
-              <span className="text-2xl font-bold">ZooZo</span>
+              <span className="text-2xl font-bold">V</span>
             </div>
             
             <p className="text-muted-foreground max-w-md">
-              Master your interview skills with AI-powered practice sessions.
+              Master your resume optimization with AI-powered analysis.
               Get personalized feedback and land your dream job with confidence.
             </p>
             
@@ -88,7 +79,7 @@ export const Footer = () => {
                 rel="noopener noreferrer"
                 className="block text-muted-foreground hover:text-primary transition-colors"
               >
-                ZooZo AI Interview Bot
+                V AI Interview Bot
               </a>
             </div>
           </div>
@@ -97,7 +88,7 @@ export const Footer = () => {
         {/* Copyright */}
         <div className="border-t border-border mt-8 pt-6 text-center">
           <p className="text-sm text-muted-foreground">
-            © 2024 ZooZo AI Resume Reviewer. All rights reserved.
+            © 2024 V AI Resume Reviewer. All rights reserved.
           </p>
         </div>
       </div>
