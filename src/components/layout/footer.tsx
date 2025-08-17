@@ -10,7 +10,7 @@ export const Footer = () => {
               <div className="w-10 h-10 bg-primary-gradient rounded-lg flex items-center justify-center p-1">
                 <img src="/src/assets/v-logo.png" alt="V Logo" className="w-full h-full object-contain" />
               </div>
-              <span className="text-2xl font-bold">V</span>
+              
             </div>
             
             <p className="text-muted-foreground max-w-md">
