@@ -44,6 +44,7 @@ export const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Other Projects</h3>
             <div className="space-y-2">
               <a href="https://v-ai-interview-simulator.lovable.app/" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">V The AI Interview Simulator</a>
+              <a href="https://v-ai-powered-interview-simulator.vercel.app/" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">V The AI Interview Simulator</a>
             </div>
           </div>
         </div>
