@@ -7,9 +7,7 @@ export const Footer = () => {
           {/* Left Column - Brand and Social */}
           <div className="space-y-6">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-primary-gradient rounded-lg flex items-center justify-center p-1">
-                
-              </div>
+              
               
             </div>
             
