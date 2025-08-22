@@ -8,7 +8,7 @@ export const Footer = () => {
           <div className="space-y-6">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-primary-gradient rounded-lg flex items-center justify-center p-1">
-                <img src="/src/assets/v-logo.png" alt="V Logo" className="w-full h-full object-contain" />
+                
               </div>
               
             </div>
