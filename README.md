@@ -1,18 +1,10 @@
 # V-AI-Powered-Resume-Reviewer  
 🚀 AI-powered resume reviewer that analyzes resumes, scores them, and provides actionable feedback to help job seekers beat the ATS and land interviews.
 
-![GitHub stars](https://img.shields.io/github/stars/Vizz27/V-AI-Powered-Resume-Reviewer?style=social)
-![GitHub forks](https://img.shields.io/github/forks/Vizz27/V-AI-Powered-Resume-Reviewer?style=social)
-![License](https://img.shields.io/github/license/Vizz27/V-AI-Powered-Resume-Reviewer)
-![Issues](https://img.shields.io/github/issues/Vizz27/V-AI-Powered-Resume-Reviewer)
-
 ---
 
 ## 🔗 Live Demo
-👉 [Try it here](https://your-demo-link.com) *(replace with deployed link if available)*  
-
-![Demo Screenshot](./assets/demo.png)  
-*(Add a screenshot or GIF showing resume upload + feedback results)*
+👉(https://v-ai-powered-resume-reviewer.vercel.app/)
 
 ---
 
