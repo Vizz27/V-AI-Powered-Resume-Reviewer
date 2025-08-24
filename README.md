@@ -1,64 +1,62 @@
-# AI Resume Reviewer  
+# V-AI-Powered-Resume-Reviewer  
+🚀 AI-powered resume reviewer that analyzes resumes, scores them, and provides actionable feedback to help job seekers beat the ATS and land interviews.
 
-The **AI Resume Reviewer** is a web application that helps users analyze and improve their resumes with AI assistance. It provides suggestions, feedback, and improvements to make resumes more effective and professional.  
-
-🌐 Live Demo: [AI Resume Reviewer](https://v-ai-powered-resume-reviewer.vercel.app/)  
-
----
-
-## 🚀 Project Overview  
-
-I built this project as part of my exploration into **AI-powered productivity tools**. The goal was to create a simple, fast, and modern web app that could:  
-
-- Take resume input (text or document).  
-- Provide structured AI-driven feedback.  
-- Offer improvement suggestions in real-time.  
-- Run smoothly on web and mobile.  
+![GitHub stars](https://img.shields.io/github/stars/Vizz27/V-AI-Powered-Resume-Reviewer?style=social)
+![GitHub forks](https://img.shields.io/github/forks/Vizz27/V-AI-Powered-Resume-Reviewer?style=social)
+![License](https://img.shields.io/github/license/Vizz27/V-AI-Powered-Resume-Reviewer)
+![Issues](https://img.shields.io/github/issues/Vizz27/V-AI-Powered-Resume-Reviewer)
 
 ---
 
-## 🛠️ Tech Stack  
+## 🔗 Live Demo
+👉 [Try it here](https://your-demo-link.com) *(replace with deployed link if available)*  
 
-This project is built with the following technologies:  
-
-- **React (TypeScript)** – Component-based frontend framework.  
-- **Vite** – Lightning-fast development environment.  
-- **Tailwind CSS** – Utility-first styling.  
-- **shadcn/ui** – Prebuilt modern UI components.  
-- **Node.js & npm** – Package manager and runtime.  
-- **Vercel** – Hosting & deployment.  
+![Demo Screenshot](./assets/demo.png)  
+*(Add a screenshot or GIF showing resume upload + feedback results)*
 
 ---
 
-## 📚 Resources & References  
-
-While developing this project, I referred to:  
-
-- [React Documentation](https://react.dev/)  
-- [TypeScript Docs](https://www.typescriptlang.org/)  
-- [TailwindCSS Docs](https://tailwindcss.com/docs)  
-- [shadcn/ui](https://ui.shadcn.com/)  
-- [Vercel Deployment Docs](https://vercel.com/docs)  
+## ✨ Features
+- 📄 **Resume Upload & Analysis** – Upload your resume and receive instant AI-driven feedback.  
+- 🎯 **ATS Compatibility Scoring** – Get insights into how ATS systems might parse your resume.  
+- 📝 **Actionable Suggestions** – Improve phrasing, keywords, and formatting.  
+- 🔍 **Keyword Highlights** – Ensure your resume aligns with job descriptions.  
+- 📊 **Detailed Feedback Report** – Easy-to-understand scoring and improvement breakdown.  
 
 ---
 
-## ⚡ Features  
-
-- Simple and clean UI.  
-- AI-powered resume feedback.  
-- Works across devices (responsive design).  
-- Deployed and accessible instantly via Vercel.  
+## 🛠️ Tech Stack
+- **Frontend:** React / Next.js / Tailwind CSS  
+- **Backend / AI:** Node.js or Python + OpenAI API (GPT models)  
+- **Deployment:** Vercel / Netlify *(customize as per your setup)*  
 
 ---
 
-## 🖥️ Setup & Installation  
+## ⚡ Getting Started
 
-If you want to run this project locally:  
+### Prerequisites
+- Node.js (>= 18)  
+- npm / yarn / pnpm  
+- OpenAI API key  
 
-```sh
+### Installation
+```bash
 # Clone the repository
-git clone <YOUR_REPO_URL>
-cd ai-resume-reviewer
+git clone https://github.com/Vizz27/V-AI-Powered-Resume-Reviewer.git
+cd V-AI-Powered-Resume-Reviewer
+
+# Install dependencies
+npm install
+
+# Add your environment variables
+echo "OPENAI_API_KEY=your_api_key_here" > .env
+
+# Run locally
+npm run dev
+
+# Build for production
+npm run build
+
 
 # Install dependencies
 npm install
