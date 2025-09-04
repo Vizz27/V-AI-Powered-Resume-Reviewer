@@ -4,7 +4,7 @@
 ---
 
 ## 🔗 Live Demo
-👉(https://v-ai-powered-resume-reviewer.vercel.app/)
+👉(https://v-ai-powered-resume-reviewer.vercel.app/) 
 
 ---
 
