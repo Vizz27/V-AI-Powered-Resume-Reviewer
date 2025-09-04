@@ -34,6 +34,170 @@ const Index = () => {
       description: `${file.name} is ready for analysis`
     });
   };
+  const analyzeResumeContent = async (resumeText: string, jobDesc: string): Promise<AnalysisResults> => {
+    // Extract common job-related keywords from job description
+    const jobKeywords = jobDesc
+      .toLowerCase()
+      .match(/\b(?:javascript|python|react|node|sql|aws|docker|kubernetes|agile|scrum|git|api|database|frontend|backend|fullstack|typescript|html|css|java|angular|vue|mongodb|postgresql|redis|elasticsearch|machine learning|ai|data science|cloud|azure|gcp|devops|ci\/cd|testing|junit|pytest|selenium|leadership|teamwork|communication|problem solving|analytical|project management|marketing|sales|design|ui\/ux|photoshop|figma|analytics|seo|sem|social media|content|writing|excel|powerpoint|tableau|power bi|finance|accounting|consulting|strategy|operations|legal|compliance|research|healthcare|engineering|manufacturing|logistics|supply chain|customer service|hr|recruiting|training|education|teaching|nonprofit)\b/g) || [];
+    
+    const uniqueJobKeywords = [...new Set(jobKeywords)];
+    
+    // Extract keywords from resume text
+    const resumeKeywords = resumeText
+      .toLowerCase()
+      .match(/\b(?:javascript|python|react|node|sql|aws|docker|kubernetes|agile|scrum|git|api|database|frontend|backend|fullstack|typescript|html|css|java|angular|vue|mongodb|postgresql|redis|elasticsearch|machine learning|ai|data science|cloud|azure|gcp|devops|ci\/cd|testing|junit|pytest|selenium|leadership|teamwork|communication|problem solving|analytical|project management|marketing|sales|design|ui\/ux|photoshop|figma|analytics|seo|sem|social media|content|writing|excel|powerpoint|tableau|power bi|finance|accounting|consulting|strategy|operations|legal|compliance|research|healthcare|engineering|manufacturing|logistics|supply chain|customer service|hr|recruiting|training|education|teaching|nonprofit)\b/g) || [];
+    
+    const uniqueResumeKeywords = [...new Set(resumeKeywords)];
+    
+    // Calculate keyword match score
+    const matchedKeywords = uniqueJobKeywords.filter(keyword => 
+      uniqueResumeKeywords.includes(keyword)
+    );
+    const keywordScore = uniqueJobKeywords.length > 0 
+      ? Math.round((matchedKeywords.length / uniqueJobKeywords.length) * 100)
+      : 50;
+    
+    // Find missing keywords
+    const missingKeywords = uniqueJobKeywords.filter(keyword => 
+      !uniqueResumeKeywords.includes(keyword)
+    ).slice(0, 5); // Limit to top 5 missing keywords
+    
+    // Calculate ATS score based on resume structure
+    let atsScore = 70; // Base score
+    
+    // Check for common ATS-friendly elements
+    if (resumeText.includes('@')) atsScore += 5; // Email present
+    if (/\b\d{3}[-.]?\d{3}[-.]?\d{4}\b/.test(resumeText)) atsScore += 5; // Phone number
+    if (/\b(experience|work history|employment)\b/i.test(resumeText)) atsScore += 5; // Experience section
+    if (/\b(education|degree|university|college)\b/i.test(resumeText)) atsScore += 5; // Education section
+    if (/\b(skills|technologies|competencies)\b/i.test(resumeText)) atsScore += 5; // Skills section
+    if (resumeText.split('\n').length > 10) atsScore += 5; // Adequate length
+    
+    // Penalize for potential ATS issues
+    if (resumeText.includes('\t')) atsScore -= 5; // Tables can cause issues
+    if (/[^\x00-\x7F]/.test(resumeText)) atsScore -= 3; // Special characters
+    
+    atsScore = Math.min(Math.max(atsScore, 0), 100);
+    
+    // Calculate readability score
+    const sentences = resumeText.split(/[.!?]+/).filter(s => s.trim().length > 0);
+    const words = resumeText.split(/\s+/).filter(w => w.length > 0);
+    const avgWordsPerSentence = words.length / Math.max(sentences.length, 1);
+    
+    let readabilityScore = 85; // Base readability score
+    if (avgWordsPerSentence > 25) readabilityScore -= 10; // Too long sentences
+    if (avgWordsPerSentence < 10) readabilityScore -= 5; // Too short sentences
+    if (words.length < 50) readabilityScore -= 20; // Too short overall
+    if (words.length > 1000) readabilityScore -= 5; // Too long overall
+    
+    readabilityScore = Math.min(Math.max(readabilityScore, 0), 100);
+    
+    // Calculate overall score
+    const overallScore = Math.round((atsScore + keywordScore + readabilityScore) / 3);
+    
+    // Generate dynamic feedback
+    const feedback: FeedbackItem[] = [];
+    let feedbackId = 1;
+    
+    if (missingKeywords.length > 0) {
+      feedback.push({
+        id: feedbackId.toString(),
+        type: "warning",
+        title: "Missing Key Skills",
+        description: `Consider adding these relevant skills: ${missingKeywords.slice(0, 3).join(', ')}`,
+        priority: "high"
+      });
+      feedbackId++;
+    }
+    
+    if (keywordScore < 60) {
+      feedback.push({
+        id: feedbackId.toString(),
+        type: "error",
+        title: "Low Keyword Match",
+        description: "Your resume matches less than 60% of job requirements. Review the job description and add relevant skills.",
+        priority: "high"
+      });
+      feedbackId++;
+    }
+    
+    if (!resumeText.includes('@')) {
+      feedback.push({
+        id: feedbackId.toString(),
+        type: "error",
+        title: "Missing Contact Information",
+        description: "Add a professional email address to your contact information",
+        priority: "high"
+      });
+      feedbackId++;
+    }
+    
+    if (!/\b\d{3}[-.]?\d{3}[-.]?\d{4}\b/.test(resumeText)) {
+      feedback.push({
+        id: feedbackId.toString(),
+        type: "warning",
+        title: "Phone Number Missing",
+        description: "Include a phone number in your contact section",
+        priority: "medium"
+      });
+      feedbackId++;
+    }
+    
+    if (avgWordsPerSentence > 25) {
+      feedback.push({
+        id: feedbackId.toString(),
+        type: "info",
+        title: "Sentence Length",
+        description: "Consider breaking down long sentences for better readability",
+        priority: "medium"
+      });
+      feedbackId++;
+    }
+    
+    if (words.length < 100) {
+      feedback.push({
+        id: feedbackId.toString(),
+        type: "warning",
+        title: "Resume Too Short",
+        description: "Your resume appears quite brief. Consider adding more details about your experience and achievements.",
+        priority: "medium"
+      });
+      feedbackId++;
+    }
+    
+    if (atsScore >= 85) {
+      feedback.push({
+        id: feedbackId.toString(),
+        type: "success",
+        title: "Excellent ATS Compatibility",
+        description: "Your resume is well-structured for Applicant Tracking Systems",
+        priority: "low"
+      });
+      feedbackId++;
+    }
+    
+    if (keywordScore >= 80) {
+      feedback.push({
+        id: feedbackId.toString(),
+        type: "success",
+        title: "Strong Keyword Match",
+        description: "Your resume aligns well with the job requirements",
+        priority: "low"
+      });
+      feedbackId++;
+    }
+    
+    return {
+      atsScore,
+      keywordScore,
+      readabilityScore,
+      overallScore,
+      processingTime: Math.random() * 2 + 1, // Random processing time 1-3 seconds
+      keywordGaps: missingKeywords,
+      feedback
+    };
+  };
+
   const handleAnalyze = async () => {
     if (!uploadedFile) {
       toast({
@@ -43,6 +207,7 @@ const Index = () => {
       });
       return;
     }
+
     if (!jobDescription.trim()) {
       toast({
         title: "Job description required",
@@ -51,49 +216,39 @@ const Index = () => {
       });
       return;
     }
+
     setIsAnalyzing(true);
 
-    // Simulate analysis (replace with real API call)
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    const mockResults: AnalysisResults = {
-      atsScore: 85,
-      keywordScore: 72,
-      readabilityScore: 88,
-      overallScore: 82,
-      processingTime: 1.8,
-      keywordGaps: ["machine learning", "cloud computing", "agile methodology"],
-      feedback: [{
-        id: "1",
-        type: "warning",
-        title: "Missing Keywords",
-        description: "Add 'machine learning' and 'cloud computing' to your skills section",
-        priority: "high"
-      }, {
-        id: "2",
-        type: "error",
-        title: "Date Inconsistency",
-        description: "Employment dates are inconsistent in the Experience section",
-        priority: "high"
-      }, {
-        id: "3",
-        type: "info",
-        title: "Optimize Section Headers",
-        description: "Use standard headers like 'Professional Experience' instead of 'Work History'",
-        priority: "medium"
-      }, {
-        id: "4",
-        type: "success",
-        title: "Great Contact Information",
-        description: "All essential contact details are present and well-formatted",
-        priority: "low"
-      }]
-    };
-    setAnalysisResults(mockResults);
-    setIsAnalyzing(false);
-    toast({
-      title: "Analysis complete!",
-      description: `Your resume scored ${mockResults.overallScore}% overall`
-    });
+    try {
+      // Read the uploaded file content
+      const fileContent = await new Promise<string>((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (e) => resolve(e.target?.result as string || '');
+        reader.onerror = () => reject(new Error('Failed to read file'));
+        reader.readAsText(uploadedFile);
+      });
+
+      // Simulate processing time
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      // Analyze the actual content
+      const results = await analyzeResumeContent(fileContent, jobDescription);
+      
+      setAnalysisResults(results);
+      
+      toast({
+        title: "Analysis complete!",
+        description: `Your resume scored ${results.overallScore}% overall`
+      });
+    } catch (error) {
+      toast({
+        title: "Analysis failed",
+        description: "There was an error analyzing your resume. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsAnalyzing(false);
+    }
   };
   return <div className="min-h-screen bg-subtle-gradient">
       <Header />
