@@ -228,11 +228,18 @@ const Index = () => {
         reader.readAsText(uploadedFile);
       });
 
+      console.log('File content preview:', fileContent.substring(0, 200));
+      console.log('Job description preview:', jobDescription.substring(0, 200));
+      console.log('File name:', uploadedFile.name);
+      console.log('Analysis timestamp:', new Date().toISOString());
+
       // Simulate processing time
       await new Promise(resolve => setTimeout(resolve, 1500));
       
       // Analyze the actual content
       const results = await analyzeResumeContent(fileContent, jobDescription);
+      
+      console.log('Analysis results:', results);
       
       setAnalysisResults(results);
       
@@ -241,6 +248,7 @@ const Index = () => {
         description: `Your resume scored ${results.overallScore}% overall`
       });
     } catch (error) {
+      console.error('Analysis error:', error);
       toast({
         title: "Analysis failed",
         description: "There was an error analyzing your resume. Please try again.",
